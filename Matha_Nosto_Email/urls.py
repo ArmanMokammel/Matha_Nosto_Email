@@ -23,7 +23,7 @@ from Matha_Nosto_Email import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('users.urls', namespace='users')),
-    path('dashboard/', include('email_templater.urls', namespace='email_templater')),
+    path('', include('email_templater.urls', namespace='email_templater')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

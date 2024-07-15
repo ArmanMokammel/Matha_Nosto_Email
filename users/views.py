@@ -12,5 +12,3 @@ def signup(request):
 def dashboard(request):
     return render(request,"dashboard.html")
 
-def create_email(request):
-    return render(request,"create_email.html")
