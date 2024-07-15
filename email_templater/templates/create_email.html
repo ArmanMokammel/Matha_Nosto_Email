@@ -1,82 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create email</title>
+    <title>Create Email</title>
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .sec0{
+        body {
             display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            margin-top: 50px
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
         }
 
-        .title{
-            width: 600px;
-            height: 60px;
-            padding: 10px 10px;
-            border: solid 1px gray;
-            text-align: center;
-            font-size: 30px;
-        }
-
-        .sec1{
-            margin: 50px 25%;
-        }
-
-        .sec3{
-            display: flex;
-            justify-content: center;
-            margin-top: 50px;
-        }
-        
-        .button1{
-            background-color: rgb(255, 255, 255);
-            color: rgb(0, 0, 0);
-            padding: 10px 30px;
-            text-decoration: none;
+        form {
+            background: #ffffff;
             border-radius: 10px;
-            font-size: 15px;
-            transition: 0.5s;
-            border: none;
-            margin: 30px 0px 20px 0px;
-            border: solid 1px gray;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 600px;
         }
 
-        .button1:hover{
-            background-color: #000000;
+        .title {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .desc {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            resize: vertical;
+            margin-bottom: 20px;
+            min-height: 200px;
+        }
+
+        .button1 {
+            background-color: #535753;
             color: rgb(255, 255, 255);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+            display: block;
         }
 
+        .button1:hover {
+            background-color: #000000;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 600px) {
+            .title,
+            .desc {
+                font-size: 1em;
+                padding: 10px;
+            }
+
+            .button1 {
+                font-size: 0.9em;
+                padding: 10px 20px;
+            }
+        }
     </style>
 </head>
+
 <body>
     <form method="POST">
-        {% csrf_token %} 
-        <section class="sec0">
-                <input class="title" type="text" name="title" placeholder="Title of the email">
+        {% csrf_token %}
+        <section>
+            <input class="title" type="text" name="title" placeholder="Title of the email">
         </section>
-    
-        <section class="sec1">
-                <textarea rows="10" cols="100" name="description" class="desc"></textarea>
+
+        <section>
+            <textarea name="description" class="desc" placeholder="Write your email here..."></textarea>
         </section>
-           
-    
-        <section class="sec2">
-        </section>
-    
+
         <section class="sec3">
-            <div class="submit">
-                    <input type="submit" class="button1" name="submit_email">
-            </div>
+            <input type="submit" class="button1" name="submit_email" value="Submit Email">
         </section>
     </form>
 </body>
+
 </html>
