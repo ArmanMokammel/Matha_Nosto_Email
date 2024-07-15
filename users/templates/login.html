@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        .sec0{
+            justify-content:center;
+            align-items:center;
+            text-align: center;
+            margin: 8% 35%; 
+            border-style: outset;
+            border-radius: 10px;
+            
+        }
+
+        .sec0 h1{
+            margin-bottom: 20px;
+            background-color: black;
+            color: white;
+            padding: 20px 0px;
+            font-size: 30px;
+            letter-spacing: 5px;
+        }
+
+        .sec0 p{
+            margin: 20px 0px 5px 100px;
+            text-align: left;
+        }
+
+        .button1{
+            margin: 30px;
+        }
+
+        .form1 input{
+            width: 250px;
+            height: 40px;
+            border-radius: 10px;
+            padding: 10px 10px;
+            border: solid 1px gray;
+        }
+
+        .button1{
+            background-color: black;
+            color: white;
+            padding: 10px 30px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: 0.5s;
+            border: none;
+        }
+
+        .button1:hover{
+            background-color: #ffffff;
+            color: black;
+        }
+
+        .button2{
+            color: black;
+            text-decoration: none;
+            font-size: 10px;
+            transition: 0.1s;
+            border: none;
+
+        }
+
+        .button2:hover{
+            border-bottom: solid;
+        }
+    </style>
+
+</head>
+<body>
+
+    <section class="sec0">
+        <h1>Log-In</h1>
+        <form class="form1">
+            <p>Username</p>
+            <input type="text" placeholder="Username">
+
+            <p>Password</p>
+            <input type="password" placeholder="Password">
+
+            <p> Confirm Password</p>
+            <input type="password" placeholder="Password">
+        </form>
+
+        <a href="#"><input class="button1" type="submit" value="Log-in"></a>
+
+        <a href="{% url 'users:signup' %}"><input class="button2" type="submit" value="Register"></a>
+
+    </section>
+    
+    
+</body>
+</html>

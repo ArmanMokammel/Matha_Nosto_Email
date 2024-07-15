@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dash</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .sec0{
+            display: flex;
+            justify-content: center;
+            margin-top: 50px
+        }
+
+        .title{
+            width: 300px;
+            height: 60px;
+            padding: 10px 10px;
+            border: solid 1px gray;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .sec1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .button1{
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            padding: 10px 30px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: 0.5s;
+            border: none;
+            margin: 30px 0px 20px 0px;
+            border: solid 1px gray;
+        }
+
+        .button1:hover{
+            background-color: #000000;
+            color: rgb(255, 255, 255);
+        }
+
+        .table, th, td {
+            border: 2px solid gray;
+            font-size: 20px;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .sec2{
+            display: flex;
+            justify-content: center;
+            margin-top: 100px;
+        }
+    </style>
+
+    
+</head>
+<body>
+    <section class="sec0">
+        <form class="form0">
+            <input class="title" type="text" placeholder="Title">
+    </section>
+
+    <section class="sec1">
+        <a class="button1" href="#">Create New</a>
+    </section>
+
+    <section class="sec2">
+        <table style="width:75%">
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Contains Attachments</th>
+                <th>Date</th>
+            </tr>
+
+            <tr>
+                <td>Title_1</td>
+                <td>Description_1</td>
+                <td><i class="fa-solid fa-xmark"></i></td>
+                <td>Date_1</td>
+            </tr>
+
+            <tr>
+                <td>Title_2</td>
+                <td>Description_2</td>
+                <td><i class="fa-solid fa-check"></i></td>
+                <td>Date_2</td>
+            </tr>
+
+            <tr>
+                <td>Title_3</td>
+                <td>Description_3</td>
+                <td><i class="fa-solid fa-xmark"></i></td>
+                <td>Date_3</td>
+            </tr>
+        </table>
+
+    </section>
+
+
+    
+</body>
+</html>
