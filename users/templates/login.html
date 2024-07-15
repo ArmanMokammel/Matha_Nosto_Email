@@ -83,18 +83,16 @@
 
     <section class="sec0">
         <h1>Log-In</h1>
-        <form class="form1">
+        <form method="POST" class="form1">
+            {% csrf_token %}
             <p>Username</p>
-            <input type="text" placeholder="Username">
+            <input name="username" type="text" placeholder="Username">
 
             <p>Password</p>
-            <input type="password" placeholder="Password">
-
-            <p> Confirm Password</p>
-            <input type="password" placeholder="Password">
+            <input name="password" type="password" placeholder="Password">
+            
+            <a href="#"><input class="button1" type="submit" name="Log-in" value="Log-in"></a>
         </form>
-
-        <a href="#"><input class="button1" type="submit" value="Log-in"></a>
 
         <a href="{% url 'users:signup' %}"><input class="button2" type="submit" value="Register"></a>
 
