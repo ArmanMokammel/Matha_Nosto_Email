@@ -58,25 +58,25 @@
     </style>
 </head>
 <body>
-    <section class="sec0">
-        <form class="form0">
-            <input class="title" type="text" placeholder="Title of the email">
-    </section>
-
-    <section class="sec1">
-        <form class="form1">
-            <textarea rows="10" cols="100" name="description" class="desc"></textarea>
-        </form>
-
-    <section class="sec2">
-    </section>
-
-    <section class="sec3">
-        <div class="submit">
-            <form class="form2">
-                <input type="submit" class="button1">
-            </form>
-        </div>
-    </section>
+    <form method="POST">
+        {% csrf_token %} 
+        <section class="sec0">
+                <input class="title" type="text" name="title" placeholder="Title of the email">
+        </section>
+    
+        <section class="sec1">
+                <textarea rows="10" cols="100" name="description" class="desc"></textarea>
+        </section>
+           
+    
+        <section class="sec2">
+        </section>
+    
+        <section class="sec3">
+            <div class="submit">
+                    <input type="submit" class="button1" name="submit_email">
+            </div>
+        </section>
+    </form>
 </body>
 </html>

@@ -71,31 +71,35 @@
 </head>
 <body>
     <section class="sec0">
-        <form class="form0">
-            <input class="title" type="text" placeholder="Title">
+          <h1>Matha Nosto</h1>
+          
     </section>
 
     <section class="sec1">
-        <a class="button1" href="#">Create New</a>
+        <a class="button1" href="{% url 'email_templater:create_email' %}">Create New</a>
     </section>
 
     <section class="sec2">
         <table style="width:75%">
             <tr>
                 <th>Title</th>
-                <th>Description</th>
                 <th>Contains Attachments</th>
                 <th>Date</th>
             </tr>
-
+           {% for email_template in email_templates %}
             <tr>
-                <td>Title_1</td>
-                <td>Description_1</td>
-                <td><i class="fa-solid fa-xmark"></i></td>
-                <td>Date_1</td>
+                <td>{{email_template.subject}}</td>
+                 {% if email_template.contains_attachment %}
+                 <td><i class="fa-solid fa-check"></i></td>
+                 {% else %}
+                 <td><i class="fa-solid fa-xmark"></i></td>
+                 {% endif %}
+                <td>{{ email_template.timestamp }}</td>
             </tr>
+            {% endfor %}
 
-            <tr>
+            
+            {% comment %} <tr>
                 <td>Title_2</td>
                 <td>Description_2</td>
                 <td><i class="fa-solid fa-check"></i></td>
@@ -107,7 +111,7 @@
                 <td>Description_3</td>
                 <td><i class="fa-solid fa-xmark"></i></td>
                 <td>Date_3</td>
-            </tr>
+            </tr> {% endcomment %}
         </table>
 
     </section>
