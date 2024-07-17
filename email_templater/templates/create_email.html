@@ -73,6 +73,10 @@
             transform: scale(1.05);
         }
 
+        .sec4{
+            padding-bottom: 20px;
+        }
+
         @media (max-width: 600px) {
             .title,
             .desc {
@@ -84,6 +88,8 @@
                 font-size: 0.9em;
                 padding: 10px 20px;
             }
+
+    
         }
     </style>
 </head>
@@ -97,6 +103,10 @@
 
         <section>
             <textarea name="description" class="desc" placeholder="Write your email here..."></textarea>
+        </section>
+
+        <section class="sec4"> <!-- attachments-->
+            <input class="attach" type="file" multiple>
         </section>
 
         <section class="sec3">

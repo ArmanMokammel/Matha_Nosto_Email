@@ -71,13 +71,49 @@
         .sec2{
             display: flex;
             justify-content: center;
-            margin-top: 100px;
+        }
+
+        .sec3{
+            margin: 30px 0px 20px 187px;
+        }
+        .search_bar{
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            width: 100%;
+            max-width: 250px;
+        }
+
+        .sec4{
+            display: flex;
+            justify-content: end;
+            margin-right: 200px;
+            margin-bottom: -10px;
+        }
+        .sec3 h2{
+            font-size: 20px;
+        }
+
+        .button2{
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            transition: 0.1s;
+        }
+
+        .button2:hover{
+            text-decoration: underline solid 2px black;
         }
     </style>
 
     
 </head>
 <body>
+
+    <section class="sec4"><!--logout-->
+        <a class="button2" href="#">Log out</a>
+    </section>
+
     <section class="sec0">
           <h1>Matha Nosto</h1>
           
@@ -85,6 +121,16 @@
 
     <section class="sec1">
         <a class="button1" href="{% url 'email_templater:create_email' %}">Create New</a>
+    </section>
+
+    <section class="sec3"> <!--searchbar-->
+        <div>
+            <h2> Search <i class="fa-solid fa-magnifying-glass"></i></h2>
+        </div>
+        <div>
+            <input class="search_bar" type="search">
+        </div>
+
     </section>
 
     <section class="sec2">
@@ -123,6 +169,9 @@
         </table>
 
     </section>
+
+
+
 
 
     
