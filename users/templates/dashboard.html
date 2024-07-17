@@ -144,9 +144,9 @@
             <tr>
                 <td>{{email_template.subject}}</td>
                  {% if email_template.contains_attachment %}
-                 <td><i class="fa-solid fa-check"></i></td>
+                 <td><i style="color:green;" class="fa-solid fa-check"></i></td>
                  {% else %}
-                 <td><i class="fa-solid fa-xmark"></i></td>
+                 <td><i style="color:red;" class="fa-solid fa-xmark"></i></td>
                  {% endif %}
                 <td>{{ email_template.timestamp }}</td>
             </tr>
