@@ -19,3 +19,8 @@ def create_email(request):
 
     return render(request,"create_email.html")
 
+def email_template(request):
+   
+
+    return render(request, "email_template.html")
+
