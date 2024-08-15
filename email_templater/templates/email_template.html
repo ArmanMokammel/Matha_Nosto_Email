@@ -133,11 +133,12 @@
 <body>
     <div class="email-container">
         <div class="header">
-            <h1>Email Subject Here</h1>
+             <h1>{{template.subject }} (Event)</h1>
         </div>
 
         <div class="content">
-            <p>Dear [Recipient Name],</p>
+            <p>{{template.description | safe }}</p>
+            {% comment %} <p>Dear [Recipient Name],</p>
 
             <p>This email contains important information and resources for your ongoing tasks. Please review the details below.</p>
 
@@ -145,7 +146,7 @@
 
             <p>Best regards,</p>
             <p>[Your Name]</p>
-            <p>[Company Name]</p>
+            <p>[Company Name]</p> {% endcomment %}
         </div>
 
         <div class="links-section">
@@ -161,9 +162,11 @@
         <div class="attachments-section">
             <h2>Attached Files:</h2>
             <ul>
-                <li><a href="[Attachment1 URL]">[Attachment1 Name]</a></li>
-                <li><a href="[Attachment2 URL]">[Attachment2 Name]</a></li>
-                <li><a href="[Attachment3 URL]">[Attachment3 Name]</a></li>
+                {% for attachment in attachments %}
+                <li><a href="{{ media_url }}{{attachment.document}}" target="_blank">{{attachment.document}}</a></li>
+                {% endfor %}
+               
+         
                 <!-- Add more attachments as needed -->
             </ul>
         </div>

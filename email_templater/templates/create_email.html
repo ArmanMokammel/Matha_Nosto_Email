@@ -121,8 +121,15 @@
 </head>
 
 <body>
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
+        <section>
+            <select class="title" name="template_type">
+                 
+                  <option value="task" selected>Task</option>
+                  <option value="event">Event</option>
+            </select>
+        </section>
         <section>
             <input class="title" type="text" name="title" placeholder="Title of the email">
         </section>
@@ -131,21 +138,25 @@
             <textarea name="description" class="desc" placeholder="Write your email here..."></textarea>
         </section>
 
+      
+        <section>
+            <input class="task_link" type="text" name="task_link_title" placeholder="Task Link Title">
+        </section> 
         <section>
             <input class="task_link" type="text" name="task_link" placeholder="Task Link">
-        </section>
+        </section> 
 
 
         <section class="sec4">
-            <input class="attach" type="file" multiple>
+            <input class="attach" type="file" name="attachments" multiple>
         </section>
 
         <section class="sec5">
             <h1>Send email to:</h1>
             <select class="js-multiple" name="email_addresses[]" multiple="multiple" style="width: 100%;">
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
+                <option value="admin@gmail.com">Admin</option>
+                <option value="dell@gmail.com">Dell</option>
+                <option value="huzaifa@gmail.com">Huzaifa Ahmed</option>
                 <!-- Add more options as needed -->
             </select>
         </section>
