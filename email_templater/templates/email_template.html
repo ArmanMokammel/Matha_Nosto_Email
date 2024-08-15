@@ -117,6 +117,26 @@
             text-decoration: underline;
         }
 
+        .button1 {
+            background-color: #535753;
+            color: rgb(255, 255, 255);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .button1:hover {
+            background-color: #000000;
+            transform: scale(1.05);
+        }
+
         @media (max-width: 600px) {
             .header h1 {
                 font-size: 1.5em;
@@ -125,6 +145,11 @@
             .links-section h2,
             .attachments-section h2 {
                 font-size: 1.1em;
+            }
+
+            .button1 {
+                font-size: 0.9em;
+                padding: 10px 20px;
             }
         }
     </style>
@@ -171,6 +196,10 @@
         <div class="footer">
             <p>&copy; 2024 IEEE NSU SB. All rights reserved.</p>
             <p><a href="https://ieeensusb.org">Visit IEEE NSU SB</a></p>
+        </div>
+
+        <div class="button">
+             <a href="{% url 'users:dashboard' %}"><input type="submit" class="button1" name="submit_email" value="Send Email" ></a>
         </div>
     </div>
 </body>

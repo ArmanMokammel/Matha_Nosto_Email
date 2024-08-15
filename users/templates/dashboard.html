@@ -7,6 +7,27 @@
 
     <script src="https://kit.fontawesome.com/8254fe1519.js" crossorigin="anonymous"></script>
 
+    <script> 
+        function myFunction() {
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("search_bar");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("email_table");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }       
+          }
+        }
+        </script>
+
     <style>
       * {
             margin: 0;
@@ -66,6 +87,7 @@
             border-radius: 5px;
             padding: 10px;
             text-align: center;
+            background-color: white;
         }
 
         .sec2{
@@ -107,11 +129,13 @@
     </style>
 
     
+
+    
 </head>
 <body>
 
     <section class="sec4"><!--logout-->
-        <a class="button2" href="#">Log out</a>
+        <a class="button2" href="{% url 'users:login' %}">Log out</a>
     </section>
 
     <section class="sec0">
@@ -128,13 +152,13 @@
             <h2> Search <i class="fa-solid fa-magnifying-glass"></i></h2>
         </div>
         <div>
-            <input class="search_bar" type="search">
+            <input class="search_bar" id="search_bar" type="search" onkeyup="myFunction()">
         </div>
 
     </section>
 
     <section class="sec2">
-        <table style="width:75%">
+        <table id="email_table" style="width:75%">
             <tr>
                 <th>Title</th>
                 <th>Contains Attachments</th>

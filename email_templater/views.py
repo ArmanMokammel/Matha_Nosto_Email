@@ -13,7 +13,7 @@ def create_email(request):
             email_template = Email_Template.objects.create(subject=title, description=description)
             email_template.save()
 
-            return redirect('users:dashboard')
+            return redirect('email_templater:email_template')
 
 
 
@@ -23,4 +23,9 @@ def email_template(request):
    
 
     return render(request, "email_template.html")
+
+def task_template(request):
+   
+
+    return render(request, "task_template.html")
 
