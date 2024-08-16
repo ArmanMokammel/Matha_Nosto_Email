@@ -39,7 +39,7 @@ def create_email(request):
 
             #EmailHandler.send_emails(request, email_template, email_attachments)
 
-            return redirect('users:dashboard')
+            return redirect('email_templater:email_template', email_template.pk)
 
 
 

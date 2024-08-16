@@ -129,7 +129,7 @@
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
             width: 100%;
-            max-width: 200px;
+            max-width: 250px;
             margin: 0 auto;
             display: block;
             text-decoration: none;
@@ -251,7 +251,7 @@
             </div>
 
             <div class="button">
-                <a href="{% url 'users:dashboard' %}"><input type="submit" class="button1" name="submit_email" value="Send email" ></a>
+                <a href="{% url 'email_templater:email_template' template.pk %}"><input type="submit" class="button1" name="submit_email" value="View this email in browser" ></a>
             </div>
 
         </div>

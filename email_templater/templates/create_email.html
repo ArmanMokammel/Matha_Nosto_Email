@@ -15,43 +15,41 @@
             $('.js-multiple').select2();
         });
         
-        function myFunction1() {
-        var x = document.getElementById("myDIV");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "block";
-        }
+        function myFunction1(event) {
+            if (event.target.value === "task") {
+                var x = document.getElementById("myDIV");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "block";
+                }
 
-        var x = document.getElementById("myDIV2");
-        if (x.style.display === "none") {
-            x.style.display = "none";
-        } else {
-            x.style.display = "none";
-        }
+                var x = document.getElementById("myDIV2");
+                if (x.style.display === "none") {
+                    x.style.display = "none";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+            else if (event.target.value === "event") {
+                var x = document.getElementById("myDIV");
+                if (x.style.display === "none") {
+                    x.style.display = "none";
+                } else {
+                    x.style.display = "none";
+                }
 
-        }
-
-        function myFunction2() {
-        var x = document.getElementById("myDIV");
-        if (x.style.display === "none") {
-            x.style.display = "none";
-        } else {
-            x.style.display = "none";
-        }
-
-        var x = document.getElementById("myDIV2");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "block";
-        }
-
-
-        }
-
-
+                var x = document.getElementById("myDIV2");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "block";
+                }
+            }
         
+
+        }
+    
     
 
     </script>
@@ -198,20 +196,14 @@
 
 <body>
 
-    <section class="sec8">
-        <h1>Select email type:</h1>
-        <button class="button2" onclick="myFunction1()">Task</button>
-
-        <button class="button2" onclick="myFunction2()">Event</button>
-    </section>
-
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <section>
-            <select class="title" name="template_type">
-                 
-                  <option value="task" selected onclick="myFunction1()" >Task</option>
-                  <option value="event" selected onclick="myFunction2()">Event</option>
+        <section class="sec8">
+            <h1>Select email type:</h1>
+
+            <select class="title" name="template_type" onchange="myFunction1(event)">                
+                  <option value="task" selected>Task</option>
+                  <option value="event">Event</option>
             </select>
         </section>
         <section>
@@ -224,15 +216,14 @@
 
       
         <section>
-            <input class="task_link" type="text" name="task_link_title" placeholder="Task Link Title">
+            <input class="task_link" type="text" name="task_link_title" placeholder="External Link Title">
         </section> 
         <section>
-            <input class="task_link" type="text" name="task_link" placeholder="Task Link">
+            <input class="task_link" type="text" name="task_link" placeholder="External Link">
         </section> 
 
 
         <section class="sec4">
-            <input class="attach" type="file" name="attachments" multiple>
         <div id="myDIV">
             <input class="task_link" type="text" name="task_link" placeholder="Task Link" >
         </div>
@@ -240,7 +231,7 @@
 
         <section class="sec4">
             <h1>Add attachments</h1>
-            <input class="attach" type="file" multiple>
+            <input class="attach" type="file" name="attachments" multiple>
         </section>
 
         <section id="myDIV2" class="sec6">
@@ -260,7 +251,7 @@
         </section>
 
         <section class="sec3">
-            <input type="submit" class="button1" name="submit_email" value="View email in browser">
+            <input type="submit" class="button1" name="submit_email" value="Send Email">
         </section>
 
     </form>
