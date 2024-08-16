@@ -33,9 +33,11 @@ def create_email(request):
             attachments = None
             email_attachments = []
             if request.FILES.get('attachments'):
+                email_template.contains_attachment = True
                 attachments = request.FILES.getlist('attachments')
                 for attachment in attachments:
                     email_attachments.append(Document_File.objects.create(email_template=email_template, document=attachment))
+                email_template.save()
 
             EmailHandler.send_emails(request, email_template, email_attachments)
 
