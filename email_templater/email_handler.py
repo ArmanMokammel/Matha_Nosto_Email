@@ -12,13 +12,21 @@ class EmailHandler:
             'media_url': settings.MEDIA_URL,
             'host': request.META['HTTP_HOST']
         }
-        html_body = render_to_string("email_template.html", merge_data)
+        if email_template.template_type == 'task':
+            html_body = render_to_string("task_template.html", merge_data)
+        elif email_template.template_type == 'event':
+            html_body = render_to_string("email_template.html", merge_data)
+        
 
+        
+       
+        email_array_list = list(email_template.email_recipients.keys())
         message = EmailMultiAlternatives(
-        subject='Django HTML Email',
+        subject=email_template.subject,
         # body="mail testing",
         from_email=settings.EMAIL_HOST_USER,
-        to=['armanmokammel@gmail.com']
+        to=email_array_list
         )
+
         message.attach_alternative(html_body, "text/html")
         message.send(fail_silently=False)
