@@ -6,9 +6,11 @@ class Email_Template(models.Model):
   description = models.TextField(null=True, blank=True)
   contains_attachment = models.BooleanField(null=False, blank=False, default=False)
   timestamp = models.DateTimeField(auto_now_add=True, null=True, blank=True)
-  
+  external_links=models.JSONField(null=True, blank=True, default=dict) 
+  email_recipients=models.JSONField(null=True, blank=True, default=dict) 
+  template_type = models.CharField(null=False, blank=False, max_length=60)
 
-  class Meta: 
+  class Meta:
     verbose_name = 'Email Template'
     
   def __str__(self):
@@ -30,7 +32,7 @@ class Document_File(models.Model):
   document = models.FileField(null=False, blank=False, upload_to='EmailDocuments/')
   
   class Meta: 
-    verbose_name = 'Image File'
+    verbose_name = 'Attachment'
     
   def __str__(self):
     return str(self.pk)

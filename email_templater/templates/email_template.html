@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Template</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.js-multiple').select2();
+        });
+    </script>
+
+    <style>
+                * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .email-container {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            padding: 10px;
+            border-bottom: 2px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            color: #535753;
+        }
+
+        .content {
+            padding: 20px 0;
+            font-size: 1em;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+        }
+
+        .links-section, .attachments-section {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f7f7f7;
+        }
+
+        .links-section h2, .attachments-section h2 {
+            font-size: 1.2em;
+            color: #535753;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .links-section ul, .attachments-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .links-section ul li, .attachments-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .links-section ul li a, .attachments-section ul li a {
+            color: #00629b; /* IEEE Blue */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .links-section ul li a:hover, .attachments-section ul li a:hover {
+            color: #003f66;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 2px solid #ccc;
+            margin-top: 20px;
+            color: #777;
+            font-size: 0.9em;
+        }
+
+        .footer a {
+            color: #535753;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .links-section h2,
+            .attachments-section h2 {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-container">
+        <div class="header">
+             <h1>{{template.subject }} (Event)</h1>
+        </div>
+
+        <div class="content">
+            <p>{{template.description | safe }}</p>
+            {% comment %} <p>Dear [Recipient Name],</p>
+
+            <p>This email contains important information and resources for your ongoing tasks. Please review the details below.</p>
+
+            <p>If you have any questions or need assistance, feel free to reply to this email, and our support team will be happy to help you.</p>
+
+            <p>Best regards,</p>
+            <p>[Your Name]</p>
+            <p>[Company Name]</p> {% endcomment %}
+        </div>
+
+        <div class="links-section">
+            <h2>Related Links:</h2>
+            <ul>
+                <li><a href="[Link1 URL]">[Link1 Description]</a></li>
+                <li><a href="[Link2 URL]">[Link2 Description]</a></li>
+                <li><a href="[Link3 URL]">[Link3 Description]</a></li>
+                <!-- Add more links as needed -->
+            </ul>
+        </div>
+
+        <div class="attachments-section">
+            <h2>Attached Files:</h2>
+            <ul>
+                {% for attachment in attachments %}
+                <li><a href="{{ media_url }}{{attachment.document}}" target="_blank">{{attachment.document}}</a></li>
+                {% endfor %}
+               
+         
+                <!-- Add more attachments as needed -->
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 IEEE NSU SB. All rights reserved.</p>
+            <p><a href="https://ieeensusb.org">Visit IEEE NSU SB</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

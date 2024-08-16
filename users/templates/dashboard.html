@@ -111,7 +111,7 @@
 <body>
 
     <section class="sec4"><!--logout-->
-        <a class="button2" href="#">Log out</a>
+        <a class="button2" href="{% url 'users:logout' %}">Log out</a>
     </section>
 
     <section class="sec0">
@@ -142,7 +142,7 @@
             </tr>
            {% for email_template in email_templates %}
             <tr>
-                <td>{{email_template.subject}}</td>
+                <td><a href="{% url 'email_templater:email_template' email_template.id %}">{{email_template.subject}}</a></td>
                  {% if email_template.contains_attachment %}
                  <td><i style="color:green;" class="fa-solid fa-check"></i></td>
                  {% else %}
