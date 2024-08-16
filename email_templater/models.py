@@ -9,7 +9,7 @@ class Email_Template(models.Model):
   external_links=models.JSONField(null=True, blank=True, default=dict) 
   email_recipients=models.JSONField(null=True, blank=True, default=dict) 
   template_type = models.CharField(null=False, blank=False, max_length=60)
-
+  banner_image=models.ImageField(null=False, )
   class Meta:
     verbose_name = 'Email Template'
     

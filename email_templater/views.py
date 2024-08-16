@@ -19,7 +19,6 @@ def create_email(request):
             task_link = request.POST.get('task_link')
             external_links = {}
             external_links[task_link_title] = task_link
-            external_links[task_link_title+"_1"] = task_link
             email_recipients = {}
             if request.POST.getlist('email_addresses[]'):
                 recipients = request.POST.getlist('email_addresses[]')
@@ -53,6 +52,7 @@ def email_template(request, template_id):
        "attachments": attachments,
        "media_url": settings.MEDIA_URL
    }
+   print(template.external_links)
    if template.template_type == 'event':
         return render(request, "email_template.html", context)
    elif template.template_type == 'task':

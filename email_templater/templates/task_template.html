@@ -226,9 +226,9 @@
             <div class="links-section">
                 <h2>Related Links:</h2>
                 <ul>
-                    <li><a href="[Link1 URL]">[Link1 Description]</a></li>
-                    <li><a href="[Link2 URL]">[Link2 Description]</a></li>
-                    <li><a href="[Link3 URL]">[Link3 Description]</a></li>
+                {% for key, value in template.external_links.items %} 
+                <li><a href="{{value}}">{{key}}</a></li>
+                 {% endfor %}
                     <!-- Add more links as needed -->
                 </ul>
             </div>
