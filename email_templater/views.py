@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 
 from Matha_Nosto_Email import settings
+from email_templater.email_handler import EmailHandler
 from email_templater.models import Document_File, Email_Template
 
 # Create your views here.
@@ -24,27 +25,19 @@ def create_email(request):
                 recipients = request.POST.getlist('email_addresses[]')
                 for email_recipient in recipients:
                     email_recipients[email_recipient] = ""
-                
-
-
-            
-            
 
             email_template = Email_Template.objects.create(subject=title, description=description, template_type=template_type, external_links=external_links, email_recipients=email_recipients )
-
            
             email_template.save()
            
             attachments = None
-           
-            print(request.POST.getlist('email_addresses[]'))
-
+            email_attachments = []
             if request.FILES.get('attachments'):
                 attachments = request.FILES.getlist('attachments')
                 for attachment in attachments:
-                    Document_File.objects.create(email_template=email_template, document=attachment)
+                    email_attachments.append(Document_File.objects.create(email_template=email_template, document=attachment))
 
-           
+            EmailHandler.send_emails(request, email_template, email_attachments)
 
             return redirect('users:dashboard')
 

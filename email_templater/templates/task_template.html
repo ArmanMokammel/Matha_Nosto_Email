@@ -24,15 +24,6 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
         .email-container {
             background: #ffffff;
             border-radius: 10px;
@@ -130,8 +121,13 @@
     </style>
 </head>
 
-<body>
-    <div class="email-container">
+<body style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;">
+    <div class="email-container" style="margin:0px auto;">
         <div class="header">
              <h1>{{template.subject }} (Task)</h1>
         </div>
@@ -163,7 +159,7 @@
             <h2>Attached Files:</h2>
             <ul>
                 {% for attachment in attachments %}
-                <li><a href="{{ media_url }}{{attachment.document}}" target="_blank">{{attachment.document}}</a></li>
+                <li><a href="http://{{host}}{{ media_url }}{{attachment.document}}" target="_blank">{{attachment.document}}</a></li>
                 {% endfor %}
                
          
