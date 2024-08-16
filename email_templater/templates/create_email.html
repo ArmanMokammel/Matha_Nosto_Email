@@ -14,6 +14,25 @@
         $(document).ready(function() {
             $('.js-multiple').select2();
         });
+        
+                function myFunction1() {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "block";
+        }
+        }
+
+        function myFunction2() {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "none";
+        }
+        }
+    
     </script>
 
     <style>
@@ -36,7 +55,7 @@
 
         form {
             background: #ffffff;
-            border-radius: 10px;
+            border-radius: 0px 0px 10px 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
             width: 100%;
@@ -92,18 +111,54 @@
             margin-bottom: 20px;
         }
 
-        .sec4 {
-            padding-bottom: 20px;
-        }
+        
 
-        .sec5 h1 {
+        .sec5 h1, .sec6 h1,.sec4 h1, .sec8 h1 {
             font-size: 17px;
             font-weight: 400;
             color: #535753;
         }
 
+        .sec8 h1{
+            padding-right: 20px;
+        }
+
         .sec5 {
             margin-bottom: 25px;
+        }
+
+        .button2 {
+            background-color: #535753;
+            color: rgb(255, 255, 255);
+            padding: 5px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .button2:hover {
+            background-color: #000000;
+            transform: scale(1.05);
+        }
+
+        .sec8{
+            display: flex;
+            justify-content: space-between;
+            background: #ffffff;
+            border-radius: 10px 10px 0px 0px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 600px;
+            align-items: center;
+            margin-bottom: -20px;
+            padding-top: 30px;
         }
 
         @media (max-width: 600px) {
@@ -121,6 +176,14 @@
 </head>
 
 <body>
+
+    <section class="sec8">
+        <h1>Select email type:</h1>
+        <button class="button2" onclick="myFunction1()">Task</button>
+        <div> </div>
+        <button class="button2" onclick="myFunction2()">Event</button>
+    </section>
+
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <section>
@@ -149,7 +212,21 @@
 
         <section class="sec4">
             <input class="attach" type="file" name="attachments" multiple>
+        <div id="myDIV">
+            <input class="task_link" type="text" name="task_link" placeholder="Task Link" >
+        </div>
+
+
+        <section class="sec4">
+            <h1>Add attachments</h1>
+            <input class="attach" type="file" multiple>
         </section>
+
+        <section class="sec6">
+            <h1>Add banner</h1>
+            <input class="attach" type="file" id="banner_image">
+        </section>
+
 
         <section class="sec5">
             <h1>Send email to:</h1>
@@ -164,7 +241,10 @@
         <section class="sec3">
             <input type="submit" class="button1" name="submit_email" value="Submit Email">
         </section>
+
     </form>
+
+
 </body>
 
 </html>
