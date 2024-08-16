@@ -24,6 +24,17 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        .sec0{
+            background: linear-gradient(130deg, #d5eefc ,#00629b,#003657);
+            max-width: 1000px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 50px 0px;
+            border-radius: 10px
+        }
+
+
         .email-container {
             background: #ffffff;
             border-radius: 10px;
@@ -108,6 +119,57 @@
             text-decoration: underline;
         }
 
+        .button1 {
+            background-color: #00629b;
+            color: rgb(255, 255, 255);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+            display: block;
+            text-decoration: none;
+        }
+
+        .button1:hover {
+            background-color: white;
+            transform: scale(1.05);
+            color: #00629b;
+        }
+
+        .navbar{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        
+        .img_logo{
+            width: 15%;
+        }
+
+        .nav_link{
+            color: #00629b;
+            text-decoration: none;
+            font-size: 20px;
+            transition: 0.1s;
+            padding: 0px 20px;
+            font-weight: bold;
+        }
+
+        .nav_link:hover {
+            text-decoration: underline solid 1px #00629b;
+        }
+
+        .in_div{
+            display: flex;
+            justify-content: space-between;
+        }
+
         @media (max-width: 600px) {
             .header h1 {
                 font-size: 1.5em;
@@ -116,6 +178,11 @@
             .links-section h2,
             .attachments-section h2 {
                 font-size: 1.1em;
+            }
+
+            .button1 {
+                font-size: 0.9em;
+                padding: 10px 20px;
             }
         }
     </style>
@@ -127,51 +194,68 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;">
-    <div class="email-container" style="margin:0px auto;">
-        <div class="header">
-             <h1>{{template.subject }} (Task)</h1>
+    <section class="sec0" style="margin:0px auto;">
+        <div class="email-container" style="margin:0px auto;">
+
+            <div class="navbar">
+                <img class="img_logo" src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwptF2g75Fp1SX-SBizf5m7MW8dzeBEiz66g&s" alt="logo">
+                <div class="in_div">
+                    <p ><a class="nav_link" href="https://ieeensusb.org">Home</a></p>
+                    <p ><a class="nav_link" href="https://ieeensusb.org/portal/">Portal</a></p>
+                </div>
+
+            </div>
+
+            <div class="header">
+                <h1>{{template.subject }} (Task)</h1>
+            </div>
+
+            <div class="content">
+                <p>{{template.description | safe }}</p>
+                {% comment %} <p>Dear [Recipient Name],</p>
+
+                <p>This email contains important information and resources for your ongoing tasks. Please review the details below.</p>
+
+                <p>If you have any questions or need assistance, feel free to reply to this email, and our support team will be happy to help you.</p>
+
+                <p>Best regards,</p>
+                <p>[Your Name]</p>
+                <p>[Company Name]</p> {% endcomment %}
+            </div>
+
+            <div class="links-section">
+                <h2>Related Links:</h2>
+                <ul>
+                    <li><a href="[Link1 URL]">[Link1 Description]</a></li>
+                    <li><a href="[Link2 URL]">[Link2 Description]</a></li>
+                    <li><a href="[Link3 URL]">[Link3 Description]</a></li>
+                    <!-- Add more links as needed -->
+                </ul>
+            </div>
+
+            <div class="attachments-section">
+                <h2>Attached Files:</h2>
+                <ul>
+                    {% for attachment in attachments %}
+                    <li><a href="http://{{host}}{{ media_url }}{{attachment.document}}" target="_blank">{{attachment.document}}</a></li>
+                    {% endfor %}
+                
+            
+                    <!-- Add more attachments as needed -->
+                </ul>
+            </div>
+
+            <div class="footer">
+                <p>&copy; 2024 IEEE NSU SB. All rights reserved.</p>
+                <p><a href="https://ieeensusb.org">Visit IEEE NSU SB</a></p>
+            </div>
+
+            <div class="button">
+                <a href="{% url 'users:dashboard' %}"><input type="submit" class="button1" name="submit_email" value="Send email" ></a>
+            </div>
+
         </div>
-
-        <div class="content">
-            <p>{{template.description | safe }}</p>
-            {% comment %} <p>Dear [Recipient Name],</p>
-
-            <p>This email contains important information and resources for your ongoing tasks. Please review the details below.</p>
-
-            <p>If you have any questions or need assistance, feel free to reply to this email, and our support team will be happy to help you.</p>
-
-            <p>Best regards,</p>
-            <p>[Your Name]</p>
-            <p>[Company Name]</p> {% endcomment %}
-        </div>
-
-        <div class="links-section">
-            <h2>Related Links:</h2>
-            <ul>
-                <li><a href="[Link1 URL]">[Link1 Description]</a></li>
-                <li><a href="[Link2 URL]">[Link2 Description]</a></li>
-                <li><a href="[Link3 URL]">[Link3 Description]</a></li>
-                <!-- Add more links as needed -->
-            </ul>
-        </div>
-
-        <div class="attachments-section">
-            <h2>Attached Files:</h2>
-            <ul>
-                {% for attachment in attachments %}
-                <li><a href="http://{{host}}{{ media_url }}{{attachment.document}}" target="_blank">{{attachment.document}}</a></li>
-                {% endfor %}
-               
-         
-                <!-- Add more attachments as needed -->
-            </ul>
-        </div>
-
-        <div class="footer">
-            <p>&copy; 2024 IEEE NSU SB. All rights reserved.</p>
-            <p><a href="https://ieeensusb.org">Visit IEEE NSU SB</a></p>
-        </div>
-    </div>
+    </section>
 </body>
 
 </html>

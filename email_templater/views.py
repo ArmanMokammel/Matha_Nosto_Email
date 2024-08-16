@@ -37,7 +37,7 @@ def create_email(request):
                 for attachment in attachments:
                     email_attachments.append(Document_File.objects.create(email_template=email_template, document=attachment))
 
-            EmailHandler.send_emails(request, email_template, email_attachments)
+            #EmailHandler.send_emails(request, email_template, email_attachments)
 
             return redirect('users:dashboard')
 
