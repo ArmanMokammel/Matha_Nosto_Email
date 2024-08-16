@@ -34,15 +34,6 @@
             border-radius: 10px
         }
 
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
         .email-container {
             background: #ffffff;
             border-radius: 10px;
@@ -209,9 +200,15 @@
     </style>
 </head>
 
-<body>
-    <section class="sec0">
-        <div class="email-container">
+
+<body style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;">
+    <section class="sec0" style="margin:0px auto;">
+        <div class="email-container" style="margin:0px auto;">
 
             <div class="navbar">
                 <img class="img_logo" src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwptF2g75Fp1SX-SBizf5m7MW8dzeBEiz66g&s" alt="logo">
@@ -227,19 +224,20 @@
             </div>
 
             <div class="header">
-                <h1>Email Subject Here</h1>
+                <h1>{{template.subject }} (Event)</h1>
             </div>
 
             <div class="content">
-                <p>Dear [Recipient Name],</p>
+                <p>{{template.description | safe }}</p>
+            {% comment %} <p>Dear [Recipient Name],</p>
 
-                <p>This email contains important information and resources for your ongoing tasks. Please review the details below.</p>
+            <p>This email contains important information and resources for your ongoing tasks. Please review the details below.</p>
 
-                <p>If you have any questions or need assistance, feel free to reply to this email, and our support team will be happy to help you.</p>
+            <p>If you have any questions or need assistance, feel free to reply to this email, and our support team will be happy to help you.</p>
 
-                <p>Best regards,</p>
-                <p>[Your Name]</p>
-                <p>[Company Name]</p>
+            <p>Best regards,</p>
+            <p>[Your Name]</p>
+            <p>[Company Name]</p> {% endcomment %}
             </div>
 
             <div class="links-section">
@@ -255,9 +253,9 @@
             <div class="attachments-section">
                 <h2>Attached Files:</h2>
                 <ul>
-                    <li><a href="[Attachment1 URL]">[Attachment1 Name]</a></li>
-                    <li><a href="[Attachment2 URL]">[Attachment2 Name]</a></li>
-                    <li><a href="[Attachment3 URL]">[Attachment3 Name]</a></li>
+                    {% for attachment in attachments %}
+                    <li><a href="http://{{host}}{{ media_url }}{{attachment.document}}" target="_blank">{{attachment.document}}</a></li>
+                    {% endfor %}      
                     <!-- Add more attachments as needed -->
                 </ul>
             </div>
