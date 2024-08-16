@@ -52,6 +52,8 @@
             width: 100%;
         }
 
+
+
         .header {
             text-align: center;
             padding: 10px;
@@ -128,7 +130,7 @@
         }
 
         .button1 {
-            background-color: #535753;
+            background-color: #00629b;
             color: rgb(255, 255, 255);
             padding: 15px 30px;
             border: none;
@@ -140,11 +142,46 @@
             max-width: 200px;
             margin: 0 auto;
             display: block;
+            text-decoration: none;
         }
 
         .button1:hover {
-            background-color: #000000;
+            background-color: white;
             transform: scale(1.05);
+            color: #00629b;
+        }
+
+        .navbar{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .img_logo{
+            width: 15%;
+        }
+
+        .nav_link{
+            color: #00629b;
+            text-decoration: none;
+            font-size: 20px;
+            transition: 0.1s;
+            padding: 0px 20px;
+            font-weight: bold;
+        }
+
+        .nav_link:hover {
+            text-decoration: underline solid 1px #00629b;
+        }
+
+        .in_div{
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner{
+            width: 100%;
+            object-fit: cover;
+            padding-top: 10px;
         }
 
         @media (max-width: 600px) {
@@ -168,6 +205,20 @@
 <body>
     <section class="sec0">
         <div class="email-container">
+
+            <div class="navbar">
+                <img class="img_logo" src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwptF2g75Fp1SX-SBizf5m7MW8dzeBEiz66g&s" alt="logo">
+                <div class="in_div">
+                    <p ><a class="nav_link" href="https://ieeensusb.org">Home</a></p>
+                    <p ><a class="nav_link" href="https://ieeensusb.org/portal/">Portal</a></p>
+                </div>
+
+            </div>
+
+            <div class="banner">
+                <img class="banner" src="https://uploads.dailydot.com/2018/10/olli-the-polite-cat.jpg?q=65&auto=format&w=1600&ar=2:1&fit=crop" alt="banner_image">
+            </div>
+
             <div class="header">
                 <h1>Email Subject Here</h1>
             </div>
