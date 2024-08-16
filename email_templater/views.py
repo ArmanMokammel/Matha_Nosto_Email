@@ -12,9 +12,10 @@ def create_email(request):
             title = request.POST.get('title')
             description = request.POST.get('description')
             template_type = request.POST.get('template_type')
+            banner_image = None
+            if request.FILES.get('banner_image'):
+                banner_image = request.FILES.get('banner_image')
          
-         
-
             task_link_title = request.POST.get('task_link_title')
             task_link = request.POST.get('task_link')
             external_links = {}
@@ -25,7 +26,7 @@ def create_email(request):
                 for email_recipient in recipients:
                     email_recipients[email_recipient] = ""
 
-            email_template = Email_Template.objects.create(subject=title, description=description, template_type=template_type, external_links=external_links, email_recipients=email_recipients )
+            email_template = Email_Template.objects.create(subject=title, description=description, template_type=template_type, external_links=external_links, email_recipients=email_recipients, banner_image=banner_image )
            
             email_template.save()
            
@@ -36,7 +37,7 @@ def create_email(request):
                 for attachment in attachments:
                     email_attachments.append(Document_File.objects.create(email_template=email_template, document=attachment))
 
-            #EmailHandler.send_emails(request, email_template, email_attachments)
+            EmailHandler.send_emails(request, email_template, email_attachments)
 
             return redirect('email_templater:email_template', email_template.pk)
 
@@ -52,7 +53,7 @@ def email_template(request, template_id):
        "attachments": attachments,
        "media_url": settings.MEDIA_URL
    }
-   print(template.external_links)
+
    if template.template_type == 'event':
         return render(request, "email_template.html", context)
    elif template.template_type == 'task':
